@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "bigger_ae2:256_core_crafting_accelerator"
+              "bigger_ae2:quantum_cell_component"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bigger_ae2:1024_core_crafting_accelerator"
+        "recipe": "bigger_ae2:digital_singularity_cell_component"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,8 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "bigger_ae2:1024_core_crafting_accelerator"
+      "bigger_ae2:digital_singularity_cell_component"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

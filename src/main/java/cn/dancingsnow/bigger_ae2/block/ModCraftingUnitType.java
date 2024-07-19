@@ -36,11 +36,11 @@ public enum ModCraftingUnitType implements ICraftingUnitType {
     @Override
     public Item getItemFromType() {
         return switch (this) {
-            case ACCELERATOR_4 -> ModBlocks.ACCELERATOR_4.asItem();
-            case ACCELERATOR_16 -> ModBlocks.ACCELERATOR_16.asItem();
-            case ACCELERATOR_64 -> ModBlocks.ACCELERATOR_64.asItem();
-            case ACCELERATOR_256 -> ModBlocks.ACCELERATOR_256.asItem();
-            case ACCELERATOR_1024 -> ModBlocks.ACCELERATOR_1024.asItem();
+            case ACCELERATOR_4 -> ModBlocks.ACCELERATOR_4.get().asItem();
+            case ACCELERATOR_16 -> ModBlocks.ACCELERATOR_16.get().asItem();
+            case ACCELERATOR_64 -> ModBlocks.ACCELERATOR_64.get().asItem();
+            case ACCELERATOR_256 -> ModBlocks.ACCELERATOR_256.get().asItem();
+            case ACCELERATOR_1024 -> ModBlocks.ACCELERATOR_1024.get().asItem();
         };
     }
 

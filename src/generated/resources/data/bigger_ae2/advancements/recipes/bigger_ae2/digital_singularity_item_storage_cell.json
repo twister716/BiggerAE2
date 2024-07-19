@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "bigger_ae2:64_core_crafting_accelerator"
+              "bigger_ae2:advanced_item_cell_housing"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bigger_ae2:256_core_crafting_accelerator"
+        "recipe": "bigger_ae2:digital_singularity_item_storage_cell"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,8 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "bigger_ae2:256_core_crafting_accelerator"
+      "bigger_ae2:digital_singularity_item_storage_cell"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

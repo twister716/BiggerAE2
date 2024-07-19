@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "ae2:cell_component_256k"
+              "ae2:quartz_block"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bigger_ae2:quantum_cell_component"
+        "recipe": "bigger_ae2:advanced_fluid_cell_housing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,8 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "bigger_ae2:quantum_cell_component"
+      "bigger_ae2:advanced_fluid_cell_housing"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

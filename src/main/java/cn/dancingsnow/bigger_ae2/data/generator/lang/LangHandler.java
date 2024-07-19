@@ -4,6 +4,7 @@ import com.tterrag.registrate.providers.RegistrateLangProvider;
 
 public class LangHandler {
     public static void init(RegistrateLangProvider provider) {
+        provider.add("itemGroup.bigger_ae2", "Bigger AE2");
         provider.add("tooltip.bigger_ae2.contains", "Contains: %s");
         provider.add("tooltip.bigger_ae2.quantity", "Quantity: %s");
         provider.add("tooltip.bigger_ae2.empty", "Empty");

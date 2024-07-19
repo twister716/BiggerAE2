@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "A": {
       "item": "ae2:quartz_block"
@@ -19,6 +18,5 @@
   ],
   "result": {
     "item": "bigger_ae2:advanced_item_cell_housing"
-  },
-  "show_notification": true
+  }
 }

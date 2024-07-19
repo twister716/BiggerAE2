@@ -9,9 +9,7 @@ import cn.dancingsnow.bigger_ae2.client.BiggerAE2Client;
 import cn.dancingsnow.bigger_ae2.data.generator.BiggerAE2Datagen;
 import cn.dancingsnow.bigger_ae2.init.ModBlockEntities;
 import cn.dancingsnow.bigger_ae2.init.ModBlocks;
-import cn.dancingsnow.bigger_ae2.init.ModCreativeTab;
 import cn.dancingsnow.bigger_ae2.init.ModItems;
-import cn.dancingsnow.bigger_ae2.integration.appliedflux.AppliedFluxItems;
 import cn.dancingsnow.bigger_ae2.item.cell.DigitalSingularityCellItem;
 import com.mojang.logging.LogUtils;
 
@@ -36,17 +34,9 @@ public class BiggerAE2Mod {
     public BiggerAE2Mod() {
         DistExecutor.unsafeRunForDist(() -> BiggerAE2Client::new, () -> BiggerAE2Server::new);
 
-        ModCreativeTab.register();
         ModItems.register();
         ModBlocks.register();
         ModBlockEntities.register();
-
-        try {
-            Class.forName("com.glodblock.github.appflux.common.me.key.type.FluxKeyType");
-            AppliedFluxItems.register();
-        } catch (ClassNotFoundException e) {
-            BiggerAE2Mod.LOGGER.debug("Applied Flux not installed, passed");
-        }
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(BiggerAE2Mod::initUpgrades);
@@ -62,10 +52,10 @@ public class BiggerAE2Mod {
     private static void initUpgrades(FMLCommonSetupEvent event) {
         var storageCellGroup = GuiText.StorageCells.getTranslationKey();
 
-        Upgrades.add(AEItems.VOID_CARD, ModItems.QUANTUM_ITEM_CELL, 1, storageCellGroup);
-        Upgrades.add(AEItems.VOID_CARD, ModItems.SINGULARITY_ITEM_CELL, 1, storageCellGroup);
-        Upgrades.add(AEItems.VOID_CARD, ModItems.QUANTUM_FLUID_CELL, 1, storageCellGroup);
-        Upgrades.add(AEItems.VOID_CARD, ModItems.SINGULARITY_FLUID_CELL, 1, storageCellGroup);
+        Upgrades.add(AEItems.VOID_CARD, ModItems.QUANTUM_ITEM_CELL.get(), 1, storageCellGroup);
+        Upgrades.add(AEItems.VOID_CARD, ModItems.SINGULARITY_ITEM_CELL.get(), 1, storageCellGroup);
+        Upgrades.add(AEItems.VOID_CARD, ModItems.QUANTUM_FLUID_CELL.get(), 1, storageCellGroup);
+        Upgrades.add(AEItems.VOID_CARD, ModItems.SINGULARITY_FLUID_CELL.get(), 1, storageCellGroup);
     }
 
     private static void initStorageCells(FMLCommonSetupEvent event) {

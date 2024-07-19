@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
   "ingredients": [
     {
       "item": "bigger_ae2:digital_singularity_cell_component"

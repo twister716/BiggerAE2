@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "ae2:quartz_block"
+              "bigger_ae2:16_core_crafting_accelerator"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bigger_ae2:advanced_fluid_cell_housing"
+        "recipe": "bigger_ae2:64_core_crafting_accelerator"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,8 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "bigger_ae2:advanced_fluid_cell_housing"
+      "bigger_ae2:64_core_crafting_accelerator"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

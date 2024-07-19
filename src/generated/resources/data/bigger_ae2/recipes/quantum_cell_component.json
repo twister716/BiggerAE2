@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
   "key": {
     "A": {
       "item": "ae2:sky_dust"
@@ -22,6 +21,5 @@
   ],
   "result": {
     "item": "bigger_ae2:quantum_cell_component"
-  },
-  "show_notification": true
+  }
 }

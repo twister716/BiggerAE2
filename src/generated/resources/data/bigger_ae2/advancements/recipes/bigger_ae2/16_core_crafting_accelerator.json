@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "bigger_ae2:quantum_cell_component"
+              "bigger_ae2:4_core_crafting_accelerator"
             ]
           }
         ]
@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "bigger_ae2:quantum_flux_storage_cell"
+        "recipe": "bigger_ae2:16_core_crafting_accelerator"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,8 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "bigger_ae2:quantum_flux_storage_cell"
+      "bigger_ae2:16_core_crafting_accelerator"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

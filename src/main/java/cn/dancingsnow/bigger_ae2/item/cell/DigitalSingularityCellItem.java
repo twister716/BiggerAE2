@@ -118,7 +118,7 @@ public class DigitalSingularityCellItem extends AEBaseItem implements ICellWorkb
                 content.add(new GenericStack(inv.getFilterItem(), 0));
             }
         }
-        return Optional.of(new StorageCellTooltipComponent(upgrades, content, false, true));
+        return Optional.of(new StorageCellTooltipComponent(upgrades, content, false));
     }
 
     @Override

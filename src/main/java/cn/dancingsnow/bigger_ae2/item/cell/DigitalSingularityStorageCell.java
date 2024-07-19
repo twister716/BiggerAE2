@@ -157,11 +157,6 @@ public class DigitalSingularityStorageCell implements StorageCell {
         return what.equals(storedItem) || what.equals(filterItem);
     }
 
-    @Override
-    public boolean canFitInsideCell() {
-        return filterItem == null && storedItem == null && count.signum() < 1;
-    }
-
     private void saveChanges() {
         isPersisted = false;
         if (container != null) {
