@@ -20,7 +20,6 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
@@ -37,7 +36,7 @@ public class BiggerAE2Mod {
 
     public static final Registrate REGISTRATE = Registrate.create(MOD_ID);
 
-    public BiggerAE2Mod(IEventBus modEventBus, ModContainer container) {
+    public BiggerAE2Mod(IEventBus modEventBus) {
 
         ModCreativeTab.register();
         ModItems.register();
@@ -55,8 +54,6 @@ public class BiggerAE2Mod {
         modEventBus.addListener(BiggerAE2Mod::initUpgrades);
         modEventBus.addListener(BiggerAE2Mod::initStorageCells);
         modEventBus.addListener(BiggerAE2Mod::packSetup);
-
-        REGISTRATE.registerEventListeners(modEventBus);
 
         BiggerAE2Datagen.init();
     }
