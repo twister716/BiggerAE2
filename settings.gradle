@@ -17,27 +17,26 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         // Minecraft Version
-        def minecraftVersion = "1.21"
+        def minecraftVersion = "1.21.1"
 
         // Mod Dependencies Versions
         // Common
-        def jeiVersion = "19.0.0.7"
-        def reiVersion = "16.0.729"
-        def emiVersion = "1.1.7"
+        def jeiVersion = "19.8.5.118"
+        def reiVersion = "16.0.744"
         def ae2Version = "19.0.8-alpha"
 
         // NeoForge
-        def neoForgeVersion = "21.0.16-beta"
+        def neoForgeVersion = "21.1.15"
         def registrateForgeVersion = "MC1.21-1.3.0+50"
-        def jadeForgeVersion = "15.0.4+neoforge"
+        def jadeForgeVersion = "15.3.4+neoforge"
         def topForgeVersion = "1.20.4_neo-11.0.0-1"
 
         // Libs
-        def parchmentVersion = "2024.06.02" // https://parchmentmc.org/docs/getting-started
+        def parchmentVersion = "2024.07.28" // https://parchmentmc.org/docs/getting-started
         def shadowVersion = "7.1.2"
         def macheteVersion = "1.+"
         def spotlessVersion = "7.0.0.BETA1"
-        def neogradleVersion = "7.0.145"
+        def neogradleVersion = "7.0.158"
 
         forge {
             version("forgeShortVersion", neoForgeVersion)
@@ -56,9 +55,6 @@ dependencyResolutionManagement {
             library("rei-plugin", "me.shedaniel", "RoughlyEnoughItems-default-plugin-neoforge").versionRef(rei)
             library("rei-api", "me.shedaniel", "RoughlyEnoughItems-api-neoforge").versionRef(rei)
             library("rei-forge", "me.shedaniel", "RoughlyEnoughItems-neoforge").versionRef(rei)
-
-            def emi = version("emi", emiVersion + "+" + minecraftVersion)
-            library("emi", "dev.emi", "emi-neoforge").versionRef(emi)
 
             def jade = version("jade", jadeForgeVersion)
             library("jade","maven.modrinth", "jade").versionRef(jade)

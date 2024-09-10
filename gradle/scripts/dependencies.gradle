@@ -5,9 +5,6 @@ java {
     registerFeature("rei") {
         usingSourceSet(sourceSets.main)
     }
-    registerFeature("emi") {
-        usingSourceSet(sourceSets.main)
-    }
     registerFeature("jade") {
         usingSourceSet(sourceSets.main)
     }
@@ -36,10 +33,6 @@ dependencies {
     reiCompileOnlyApi(forge.rei.api)
     reiCompileOnly(forge.rei.forge)
 
-    // EMI
-    emiCompileOnlyApi("dev.emi:emi-neoforge:${forge.versions.emi.get()}:api")
-    emiImplementation(forge.emi)
-
     // Jade
     jadeImplementation(forge.jade)
 
@@ -49,17 +42,17 @@ dependencies {
     // AE2
     // maven haven't uploaded.
     // ae2Implementation(forge.ae2) { transitive = false }
-    ae2Implementation("curse.maven:ae2-223794:5490518")
+    ae2Implementation("curse.maven:ae2-223794:5662490")
 
     // applied flux
-    implementation("curse.maven:glodium-957920:5491696")
-    implementation("curse.maven:applied-flux-965012:5504017")
+    implementation("curse.maven:glodium-957920:5614731")
+    implementation("curse.maven:applied-flux-965012:5639620")
 
     // lombok
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     if (System.getenv("RUN_SERVER") == null) {
-        runtimeOnly("maven.modrinth:embeddium:1.0.0-beta.1+mc1.21")
+        runtimeOnly("maven.modrinth:embeddium:1.0.11+mc1.21.1")
     }
 }
