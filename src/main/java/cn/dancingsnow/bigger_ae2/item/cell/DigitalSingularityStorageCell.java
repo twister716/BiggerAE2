@@ -42,9 +42,14 @@ public class DigitalSingularityStorageCell implements StorageCell {
         filterItem = cell.getConfigInventory(stack).getKey(0);
         type = cell.getKeyType();
 
-        count = !getTag().getString(COUNT).isEmpty()
-            ? new BigInteger(getTag().getString(COUNT))
-            : BigInteger.ZERO;
+        try {
+            count = !getTag().getString(COUNT).isEmpty()
+                ? new BigInteger(getTag().getString(COUNT))
+                : BigInteger.ZERO;
+        } catch (NumberFormatException e) {
+            count = BigInteger.ZERO;
+            storedItem = null;
+        }
     }
 
     @Override
