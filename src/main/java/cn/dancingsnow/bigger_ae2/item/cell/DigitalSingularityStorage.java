@@ -6,10 +6,12 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
 
+import java.math.BigInteger;
 import java.util.Objects;
 
 @Getter
@@ -18,30 +20,48 @@ public class DigitalSingularityStorage {
             RecordCodecBuilder.create(instance -> instance
                     .group(
                             AEKey.CODEC.fieldOf("key").forGetter(DigitalSingularityStorage::getStoredItem),
-                            Codec.STRING.fieldOf("count").forGetter(DigitalSingularityStorage::getCount))
+                            Codec.STRING
+                                    .flatXmap(
+                                            it -> {
+                                                try {
+                                                    return DataResult.success(new BigInteger(it));
+                                                } catch (NumberFormatException e) {
+                                                    return DataResult.success(BigInteger.ZERO);
+                                                }
+                                            },
+                                            it -> DataResult.success(it.toString()))
+                                    .fieldOf("count")
+                                    .forGetter(DigitalSingularityStorage::getCount))
                     .apply(instance, DigitalSingularityStorage::new));
+
+    public static final StreamCodec<RegistryFriendlyByteBuf, DigitalSingularityStorage> STREAM_CODEC =
+            StreamCodec.ofMember(DigitalSingularityStorage::encode, DigitalSingularityStorage::new);
 
     @Nullable private final AEKey storedItem;
 
-    private final String count;
+    private final BigInteger count;
 
-    public DigitalSingularityStorage(@Nullable AEKey storedItem, String count) {
+    public DigitalSingularityStorage(@Nullable AEKey storedItem, BigInteger count) {
         this.storedItem = storedItem;
         this.count = count;
     }
 
     public DigitalSingularityStorage(RegistryFriendlyByteBuf buf) {
         storedItem = AEKey.readOptionalKey(buf);
-        count = buf.readUtf();
+        String integerStr = buf.readUtf();
+        BigInteger c;
+        try {
+            c = new BigInteger(integerStr);
+        } catch (NumberFormatException e) {
+            c = BigInteger.ZERO;
+        }
+        count = c;
     }
 
     public void encode(RegistryFriendlyByteBuf buf) {
         AEKey.writeOptionalKey(buf, storedItem);
-        buf.writeUtf(count);
+        buf.writeUtf(count.toString());
     }
-
-    public static final StreamCodec<RegistryFriendlyByteBuf, DigitalSingularityStorage> STREAM_CODEC =
-            StreamCodec.ofMember(DigitalSingularityStorage::encode, DigitalSingularityStorage::new);
 
     @Override
     public boolean equals(Object obj) {
