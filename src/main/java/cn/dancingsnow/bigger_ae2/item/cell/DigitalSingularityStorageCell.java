@@ -46,7 +46,7 @@ public class DigitalSingularityStorageCell implements StorageCell {
         filterItem = cell.getConfigInventory(stack).getKey(0);
         type = cell.getKeyType();
 
-        count = storage != null ? new BigInteger(storage.getCount()) : BigInteger.ZERO;
+        count = storage != null ? storage.getCount() : BigInteger.ZERO;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class DigitalSingularityStorageCell implements StorageCell {
         if (storedItem == null || count.signum() < 1) {
             stack.remove(ModComponents.SINGULARITY_STORAGE);
         } else {
-            var storage = new DigitalSingularityStorage(storedItem, count.toString());
+            var storage = new DigitalSingularityStorage(storedItem, count);
             stack.set(ModComponents.SINGULARITY_STORAGE, storage);
         }
 
