@@ -2,11 +2,11 @@ package cn.dancingsnow.bigger_ae2.item.cell;
 
 import appeng.api.stacks.AEKey;
 
-import com.mojang.serialization.DataResult;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
@@ -20,32 +20,33 @@ public class DigitalSingularityStorage {
             RecordCodecBuilder.create(instance -> instance
                     .group(
                             AEKey.CODEC.fieldOf("key").forGetter(DigitalSingularityStorage::getStoredItem),
-                            Codec.STRING.flatXmap(
-                                it -> {
-                                    try {
-                                        return DataResult.success(new BigInteger(it));
-                                    } catch (NumberFormatException e) {
-                                        return DataResult.success(BigInteger.ZERO);
-                                    }
-                                },
-                                it -> DataResult.success(it.toString())
-                            ).fieldOf("count").forGetter(DigitalSingularityStorage::getCount))
+                            Codec.STRING
+                                    .flatXmap(
+                                            it -> {
+                                                try {
+                                                    return DataResult.success(new BigInteger(it));
+                                                } catch (NumberFormatException e) {
+                                                    return DataResult.success(BigInteger.ZERO);
+                                                }
+                                            },
+                                            it -> DataResult.success(it.toString()))
+                                    .fieldOf("count")
+                                    .forGetter(DigitalSingularityStorage::getCount))
                     .apply(instance, DigitalSingularityStorage::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, DigitalSingularityStorage> STREAM_CODEC =
-        StreamCodec.ofMember(DigitalSingularityStorage::encode, DigitalSingularityStorage::new);
+            StreamCodec.ofMember(DigitalSingularityStorage::encode, DigitalSingularityStorage::new);
 
     @Nullable private final AEKey storedItem;
 
     private final BigInteger count;
-
 
     public DigitalSingularityStorage(@Nullable AEKey storedItem, BigInteger count) {
         this.storedItem = storedItem;
         this.count = count;
     }
 
-    public DigitalSingularityStorage (RegistryFriendlyByteBuf buf) {
+    public DigitalSingularityStorage(RegistryFriendlyByteBuf buf) {
         storedItem = AEKey.readOptionalKey(buf);
         String integerStr = buf.readUtf();
         BigInteger c;
